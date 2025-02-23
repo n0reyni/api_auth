@@ -32,12 +32,14 @@ def logout_views(request):
     logout(request)
     return JsonResponse({"details":"Logout successful"})
 
+@csrf_exempt
 @ensure_csrf_cookie
 def session_views(request):
     if not request.user.is_authenticated:
         return JsonResponse({"is_authenticated":False}, status=400)
     return JsonResponse({"is_authenticated":True})
 
+@csrf_exempt
 def whoami_views(request):
     if not request.user.is_authenticated:
         return JsonResponse({"is_authenticated":False}, status=400)
@@ -69,6 +71,7 @@ def sign_up(request):
     login(request, user)
     return JsonResponse({"details":"Sign-up and authentification successful"})
 
+@csrf_exempt
 def refresh_session(request):
     if not request.user.is_authenticated:
         return JsonResponse({"details":"You are not logged in"}, status=400)
