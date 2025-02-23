@@ -92,7 +92,7 @@ load_dotenv()
 # Default database configuration
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
+        default='postgresql://dbaly_user:Q3OXoZXzap7XJHIpKURvPoqTE2NikLkf@dpg-cutk26vnoe9s739aivi0-a.oregon-postgres.render.com/dbaly'
     )
 }
 
